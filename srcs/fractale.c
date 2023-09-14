@@ -6,7 +6,7 @@
 /*   By: maximelavail <maximelavail@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:12:20 by maximelavai       #+#    #+#             */
-/*   Updated: 2023/09/13 16:48:02 by maximelavai      ###   ########.fr       */
+/*   Updated: 2023/09/14 15:16:06 by maximelavai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	fractale_init(win_data *data)
 {
 	data->it_max = 50;
-	data->zoom = 220;
+	data->zoom = 200;
 	data->x1 = -2.2;
 	data->y1 = -1.8;
 	data->color = 265;
@@ -31,7 +31,7 @@ void	fractale2_calc(win_data *data)
                     data->z_r = 0;
                     data->z_i = 0;
                     data->it = 0;
-                    while (data->z_r * data->z_r + data->z_i * data->z_i < 8
+                    while (data->z_r * data->z_r + data->z_i * data->z_i < 4
                                         && data->it < data->it_max)
                     {
                               data->tmp = data->z_r * data->z_r - data->z_i * data->z_i + data->c_r;
@@ -50,7 +50,7 @@ void	fractale2_calc(win_data *data)
                     data->z_i = 0;
                     data->it = 0;
                     while (data->z_r * data->z_r + data->z_i *
-                                        data->z_i < 8 && data->it < data->it_max)
+                                        data->z_i < 4 && data->it < data->it_max)
                     {
                               data->tmp = data->z_r;
                               data->z_r = data->z_r * data->z_r -
@@ -67,7 +67,7 @@ void	fractale2_calc(win_data *data)
                     data->z_i = data->y / data->zoom + data->y1;
                     data->it = 0;
                     while (data->z_r * data->z_r + data->z_i
-                                        * data->z_i < 8 && data->it < data->it_max)
+                                        * data->z_i < 4 && data->it < data->it_max)
                     {
                               data->tmp = data->z_r;
                               data->z_r = data->z_r * data->z_r -
@@ -77,7 +77,6 @@ void	fractale2_calc(win_data *data)
                               
                     }
           }
-
 
 	if (data->it == data->it_max)
 		put_pxl_to_img(data, data->x, data->y, 0x000000);

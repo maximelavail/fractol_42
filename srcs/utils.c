@@ -6,7 +6,7 @@
 /*   By: maximelavail <maximelavail@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 11:50:03 by maximelavai       #+#    #+#             */
-/*   Updated: 2023/09/13 23:18:28 by maximelavai      ###   ########.fr       */
+/*   Updated: 2023/09/14 15:28:02 by maximelavai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,9 @@ int       ft_window_close(win_data *data)
           return (0);
 }
 
-int       ft_key_press(int keycode, win_data *data)
-{
-          if (keycode == 53) {
-                    ft_window_close(data);
-          }
-          return (0);
-}
-
 void	put_pxl_to_img(win_data *data, int x, int y, int color)
 {
-	if (data->x < WIDTH && data->y < WIDTH)
+	if (data->x < WIDTH && data->y < HEIGHT)
 	{
 		color = mlx_get_color_value(data->mlx, color);
 		ft_memcpy(data->img_ptr + 4 * WIDTH * y + x * 4,
@@ -41,7 +33,7 @@ void	fractale_calc(win_data *data)
 {
 	if (data->it_max < 0)
 		data->it_max = 0;
-	else if (data->fract == 2)
+          else if (data->fract == 2)
 		fractale_pthread(data);
 	if (data->show_text)
 		put_text(data);

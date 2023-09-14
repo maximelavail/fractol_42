@@ -6,7 +6,7 @@
 /*   By: maximelavail <maximelavail@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:55:43 by maximelavai       #+#    #+#             */
-/*   Updated: 2023/09/13 23:18:49 by maximelavai      ###   ########.fr       */
+/*   Updated: 2023/09/14 15:28:15 by maximelavai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,11 @@ int       main(int argc, char **argv)
                     mlx_win_init(&data);
                     if (!data.mlx)
                               return 1;
+                    fractale_init(&data);
                     fract_init(&data);
                     data.show_text = !data.show_text;
-                    mlx_hook(data.win, 17, 0, ft_window_close, &data);
-                    mlx_key_hook(data.win, ft_key_press, &data);
 		mlx_mouse_hook(data.win, mouse_hook, &data);
 		mlx_key_hook(data.win, key_hook, &data);
-		mlx_mouse_hook(data.win, mouse_hook, &data);
                     mlx_loop(data.mlx);
           }
           return 0;

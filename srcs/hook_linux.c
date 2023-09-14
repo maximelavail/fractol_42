@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook.c                                             :+:      :+:    :+:   */
+/*   hook_linux.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maximelavail <maximelavail@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 11:18:55 by maximelavai       #+#    #+#             */
-/*   Updated: 2023/09/13 23:22:31 by maximelavai      ###   ########.fr       */
+/*   Updated: 2023/09/14 15:33:54 by maximelavai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int		key_hook2(int keycode, win_data *data)
+int	key_hook2(int keycode, win_data *data)
 {
-	if (keycode == 19) // Touche 2
+	if (keycode == 50) // Touche 2
 		data->color = 2050;
-	else if (keycode == 20) // Touche 3
+	else if (keycode == 51) // Touche 3
 		data->color = 265;
-	else if (keycode == 34) // Touche I
+	else if (keycode == 105) // Touche I
 		data->show_text = !data->show_text;
-          else if (keycode == 8) // Tocuhe C
+          else if (keycode == 99) // Tocuhe C
           {
                     if (data->wow == 0) {
                               data->wow = 1;
@@ -33,25 +33,28 @@ int		key_hook2(int keycode, win_data *data)
 	return (0);
 }
 
-int		key_hook(int keycode, win_data *data)
+int	key_hook(int keycode, win_data *data)
 {
-	if (keycode == 53) // Touche echap
+	if (keycode == 27) // Touche echap
+          {
 		ft_window_close(data);
-	else if (keycode == 24) // Touche +
+                    printf("ESC\n");
+          }
+          else if (keycode == 43) // Touche +
 		data->it_max += 50;
-	else if (keycode == 27) // Touche -
+	else if (keycode == 45) // Touche -
 		data->it_max -= 50;
-	else if (keycode == 123) // Touche fleche gauche
+	else if (keycode == 68) // Touche fleche gauche
 		data->x1 -= 30 / data->zoom;
-	else if (keycode == 124) // Touche fleche droite
+	else if (keycode == 67) // Touche fleche droite
 		data->x1 += 30 / data->zoom;
-	else if (keycode == 125) // Touche fleche bas
+	else if (keycode == 66) // Touche fleche bas
 		data->y1 += 30 / data->zoom;
-	else if (keycode == 126) // Touche fleche haut
+	else if (keycode == 65) // Touche fleche haut
 		data->y1 -= 30 / data->zoom;
-	else if (keycode == 49) // Touche espace
+	else if (keycode == 32) // Touche espace
 		fractale_init(data);
-	else if (keycode == 18) // Touche 1
+	else if (keycode == 49) // Touche 1
 		data->color = 2377215;
 	key_hook2(keycode, data);
 	fractale_calc(data);
