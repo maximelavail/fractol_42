@@ -6,7 +6,7 @@
 /*   By: maximelavail <maximelavail@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:55:43 by maximelavai       #+#    #+#             */
-/*   Updated: 2023/09/14 15:28:15 by maximelavai      ###   ########.fr       */
+/*   Updated: 2023/09/17 22:08:17 by maximelavai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ void	mlx_win_init(win_data *data)
 int       main(int argc, char **argv)
 {
           win_data  data;
+          #ifdef __linux__
+                    data.display = XOpenDisplay(NULL);
+          #endif
           
           if (ft_arguments_filter(argc, argv, &data) != 0) {
                     mlx_win_init(&data);

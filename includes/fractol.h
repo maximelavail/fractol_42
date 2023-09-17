@@ -6,7 +6,7 @@
 /*   By: maximelavail <maximelavail@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:56:00 by maximelavai       #+#    #+#             */
-/*   Updated: 2023/09/13 16:42:38 by maximelavai      ###   ########.fr       */
+/*   Updated: 2023/09/17 22:07:43 by maximelavai      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@
 # include "mlx.h"
 # include "math.h"
 # include <pthread.h>
+#ifdef __linux__
+#include <X11/Xlib.h>
+#include <X11/keysym.h>
+#include <X11/XKBlib.h>
+#endif
+
 
 # define WIDTH 800
 # define HEIGHT 600
@@ -28,6 +34,9 @@
 
 // Structure donnees fenetre
 typedef struct      win_data {
+          #ifdef __linux__
+                    Display *display;
+          #endif
 	void		*mlx;
 	void		*win;
 	void		*img;
